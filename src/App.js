@@ -1,28 +1,9 @@
-import Square from './components/square/Square';
-import clsx from 'clsx';
 import './globalStyles/appStyles.scss';
 import './globalStyles/globalStyles.scss';
+import Board from './components/Board/Board';
 
 function App() {
-  return (
-    <div className='wrapper'>
-      <div className={clsx('flex')}>
-        <Square />
-        <Square />
-        <Square />
-      </div>
-      <div className={clsx('flex')}>
-        <Square />
-        <Square />
-        <Square />
-      </div>
-      <div className={clsx('flex')}>
-        <Square />
-        <Square />
-        <Square />
-      </div>
-    </div>
-  );
+  return <Board />;
 }
 
 export default App;
