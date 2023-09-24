@@ -2,9 +2,9 @@ import Square from '../square/Square';
 import clsx from 'clsx';
 import { useState } from 'react';
 
-function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [isXNext, setisXNext] = useState(true);
+function Board({ squares, onPlay, isXNext }) {
+  // const [squares, setSquares] = useState(Array(9).fill(null));
+  // const [isXNext, setisXNext] = useState(true);
   const winner = calculateWinner(squares);
 
   const onSquareClick = (squareNumber) => {
@@ -13,8 +13,9 @@ function Board() {
     }
     const newSquaresSet = squares.slice();
     isXNext ? (newSquaresSet[squareNumber] = 'x') : (newSquaresSet[squareNumber] = 'o');
-    setisXNext(!isXNext);
-    setSquares(newSquaresSet);
+    // setisXNext(!isXNext);
+    // setSquares(newSquaresSet);
+    onPlay(newSquaresSet);
   };
 
   let status;
@@ -63,7 +64,7 @@ function calculateWinner(squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    console.log(i, 'a', a, 'b', b, 'c', c);
+
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
