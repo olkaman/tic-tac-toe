@@ -1,10 +1,7 @@
 import Square from '../square/Square';
 import clsx from 'clsx';
-import { useState } from 'react';
 
 function Board({ squares, onPlay, isXNext }) {
-  // const [squares, setSquares] = useState(Array(9).fill(null));
-  // const [isXNext, setisXNext] = useState(true);
   const winner = calculateWinner(squares);
 
   const onSquareClick = (squareNumber) => {
@@ -13,8 +10,6 @@ function Board({ squares, onPlay, isXNext }) {
     }
     const newSquaresSet = squares.slice();
     isXNext ? (newSquaresSet[squareNumber] = 'x') : (newSquaresSet[squareNumber] = 'o');
-    // setisXNext(!isXNext);
-    // setSquares(newSquaresSet);
     onPlay(newSquaresSet);
   };
 
