@@ -15,13 +15,14 @@ function Board({ squares, onPlay, isXNext }) {
 
   let status;
   if (winner) {
-    status = `The winner is ${isXNext ? 'o' : 'x'}`;
+    status = `The winner is ${winner}`;
   } else {
     status = `Next move: ${isXNext ? 'x' : 'o'}`;
   }
 
   return (
     <>
+      <div>{status}</div>
       <div className='wrapper'>
         <div className={clsx('flex')}>
           <Square value={squares[0]} onSquareClick={() => onSquareClick(0)} />
@@ -39,7 +40,6 @@ function Board({ squares, onPlay, isXNext }) {
           <Square value={squares[8]} onSquareClick={() => onSquareClick(8)} />
         </div>
       </div>
-      <div>{status}</div>
     </>
   );
 }
