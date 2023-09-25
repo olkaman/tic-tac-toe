@@ -26,11 +26,7 @@ function App() {
     } else {
       description = 'Go to the beggining of the game';
     }
-    return (
-      <div key={index}>
-        <button onClick={() => goToMove(index)}>{description}</button>
-      </div>
-    );
+    return <div key={index}>{index === currentMove ? <div>You are at move {index}</div> : <button onClick={() => goToMove(index)}>{description}</button>}</div>;
   });
 
   return (

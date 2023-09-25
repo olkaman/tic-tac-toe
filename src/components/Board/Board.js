@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 function Board({ squares, onPlay, isXNext }) {
   const winner = calculateWinner(squares);
-
+  console.log('squares', squares);
   const onSquareClick = (squareNumber) => {
     if (winner) {
       return;
@@ -16,6 +16,8 @@ function Board({ squares, onPlay, isXNext }) {
   let status;
   if (winner) {
     status = `The winner is ${winner}`;
+  } else if (squares.indexOf(null) === -1) {
+    status = `There is no winner!`;
   } else {
     status = `Next move: ${isXNext ? 'x' : 'o'}`;
   }
