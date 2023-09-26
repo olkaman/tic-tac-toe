@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 function Board({ squares, onPlay, isXNext }) {
   const winner = calculateWinner(squares);
+  const squareRowCount = 3;
 
   const onSquareClick = (squareNumber) => {
     if (winner) {
@@ -26,11 +27,11 @@ function Board({ squares, onPlay, isXNext }) {
     <>
       <div>{status}</div>
       <div className='wrapper'>
-        {[...Array(3)].map((x, rowIndex) => {
+        {[...Array(squareRowCount)].map((x, rowIndex) => {
           return (
             <div className={clsx('flex')} key={rowIndex}>
-              {[...Array(3)].map((y, colIndex) => {
-                const position = rowIndex * 3 + colIndex;
+              {[...Array(squareRowCount)].map((y, colIndex) => {
+                const position = rowIndex * squareRowCount + colIndex;
                 return <Square key={position} value={squares[position]} onSquareClick={() => onSquareClick(position)} />;
               })}
             </div>
