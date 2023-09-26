@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 function Board({ squares, onPlay, isXNext }) {
   const winner = calculateWinner(squares);
-  console.log('squares', squares);
+
   const onSquareClick = (squareNumber) => {
     if (winner) {
       return;
@@ -26,21 +26,16 @@ function Board({ squares, onPlay, isXNext }) {
     <>
       <div>{status}</div>
       <div className='wrapper'>
-        <div className={clsx('flex')}>
-          <Square value={squares[0]} onSquareClick={() => onSquareClick(0)} />
-          <Square value={squares[1]} onSquareClick={() => onSquareClick(1)} />
-          <Square value={squares[2]} onSquareClick={() => onSquareClick(2)} />
-        </div>
-        <div className={clsx('flex')}>
-          <Square value={squares[3]} onSquareClick={() => onSquareClick(3)} />
-          <Square value={squares[4]} onSquareClick={() => onSquareClick(4)} />
-          <Square value={squares[5]} onSquareClick={() => onSquareClick(5)} />
-        </div>
-        <div className={clsx('flex')}>
-          <Square value={squares[6]} onSquareClick={() => onSquareClick(6)} />
-          <Square value={squares[7]} onSquareClick={() => onSquareClick(7)} />
-          <Square value={squares[8]} onSquareClick={() => onSquareClick(8)} />
-        </div>
+        {[...Array(3)].map((x, rowIndex) => {
+          return (
+            <div className={clsx('flex')} key={rowIndex}>
+              {[...Array(3)].map((y, colIndex) => {
+                const position = rowIndex * 3 + colIndex;
+                return <Square key={position} value={squares[position]} onSquareClick={() => onSquareClick(position)} />;
+              })}
+            </div>
+          );
+        })}
       </div>
     </>
   );
