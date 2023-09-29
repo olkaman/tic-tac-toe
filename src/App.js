@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className='appStyles flex'>
-      <h1>Tic tac toe game</h1>
+      <h1>Tic-tac-toe game</h1>
       <Board squares={currentSquares} onPlay={handleOnPlay} isXNext={isXNext} />
       <button type='button' onClick={resetGame} className='button resetButton'>
         Reset game
