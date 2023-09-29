@@ -1,0 +1,45 @@
+.appStyles {
+  text-align: center;
+  flex-flow: column nowrap;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.gameHistory {
+  margin-top: 24px;
+}
+
+.button {
+  padding: 10px 20px;
+  display: inline-block;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  margin-bottom: 6px;
+  min-width: 170px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.4s all;
+
+  &.gameButton {
+    background-color: white;
+    margin-bottom: 6px;
+  }
+
+  &.resetButton {
+    background-color: #aaddda;
+    margin-top: 26px;
+  }
+
+  &:hover {
+    background-color: #93d3cf;
+  }
+}
+
+.gameInfo {
+  padding: 5px 20px;
+  border: none;
+  font-size: 14px;
+  margin-bottom: 6px;
+  min-width: 170px;
+}

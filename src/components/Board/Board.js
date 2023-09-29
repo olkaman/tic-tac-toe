@@ -1,5 +1,5 @@
 import Square from '../square/Square';
-import clsx from 'clsx';
+import styles from './Board.module.scss';
 
 function Board({ squares, onPlay, isXNext }) {
   let winningSquares = [];
@@ -48,12 +48,12 @@ function Board({ squares, onPlay, isXNext }) {
   }
 
   return (
-    <>
-      <div>{status}</div>
-      <div className='wrapper'>
+    <div className={styles.boardWrapper}>
+      <h2>{status}</h2>
+      <div>
         {[...Array(squareRowCount)].map((x, rowIndex) => {
           return (
-            <div className={clsx('flex')} key={rowIndex}>
+            <div className='flex' key={rowIndex}>
               {[...Array(squareRowCount)].map((y, colIndex) => {
                 const position = rowIndex * squareRowCount + colIndex;
                 const isWinner = winningSquares.includes(position);
@@ -63,7 +63,7 @@ function Board({ squares, onPlay, isXNext }) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 

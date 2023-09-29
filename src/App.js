@@ -24,16 +24,37 @@ function App() {
     if (index > 0) {
       description = `Go to move ${index}`;
     } else {
-      description = 'Go to the beggining of the game';
+      description = 'Go to the beggining';
     }
-    return <div key={index}>{index === currentMove ? <div>You are at move {index}</div> : <button onClick={() => goToMove(index)}>{description}</button>}</div>;
+    return (
+      <div key={index}>
+        {index === currentMove ? (
+          <div className='gameInfo'>You are at move {index}</div>
+        ) : (
+          <button type='button' onClick={() => goToMove(index)} className='button gameButton'>
+            {description}
+          </button>
+        )}
+      </div>
+    );
   });
 
+  const resetGame = () => {
+    setCurrentMove(0);
+    setHistory([Array(9).fill(null)]);
+  };
+
   return (
-    <>
+    <div className='appStyles flex'>
+      <h1>Tic tac toe game</h1>
       <Board squares={currentSquares} onPlay={handleOnPlay} isXNext={isXNext} />
-      <div>Game history: {gameHistory}</div>
-    </>
+      <button type='button' onClick={resetGame} className='button resetButton'>
+        Reset game
+      </button>
+      <div className='gameHistory'>
+        <h3>Game history:</h3> {gameHistory}
+      </div>
+    </div>
   );
 }
 
